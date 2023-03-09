@@ -43,7 +43,8 @@ describe Application do
     it 'returns success message' do
       response = post('/albums', title: 'Trompe le monde', release_year: "1991", artist_id: "1")
       expect(response.status).to eq(200)
-      expect(response.body).to eq("<h1>Successfully added album</h1>")
+      expect(response.body).to include("<h1>Successfully added album</h1>")
+      expect(response.body).to include('<a href="/">Return to home page </a>')
     end
 
     it "Responds with 400 if input is invalid" do
@@ -158,7 +159,8 @@ describe Application do
     it 'returns success message' do
       response = post('/artists', name: 'Dave', genre: 'rap')
       expect(response.status).to eq(200)
-      expect(response.body).to eq("<h1>Successfully added artist</h1>")
+      expect(response.body).to include("<h1>Successfully added artist</h1>")
+      expect(response.body).to include('<a href="/">Return to home page </a>')
     end
 
     it "Responds with 400 if input is invalid" do
