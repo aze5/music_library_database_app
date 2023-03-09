@@ -16,7 +16,7 @@ class DatabaseConnection
       return
     end
 
-    if ENV['DATABASE_URL'] == 'test'
+    if ENV['ENV'] == 'test'
       database_name = 'music_library_test'
     else
       database_name = 'music_library'

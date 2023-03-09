@@ -109,6 +109,10 @@ describe Application do
       expect(response.body).to include("<h1>Albums</h1>")
     end
 
+    it "outputs first element in albums list as a link" do
+      response = get("/albums")
+      expect(response.body).to include('<a href="/albums/1">Doolittle </a>')
+    end
 
     it "outputs fifth element in albums list as a link" do
       response = get("/albums")
@@ -119,11 +123,6 @@ describe Application do
     it "outputs last element in albums list as a link" do
       response = get("/albums")
       expect(response.body).to include('<a href="/albums/12">Ring Ring </a>')
-    end
-
-    it "outputs first element in albums list as a link" do
-      response = get("/albums")
-      expect(response.body).to include('<a href="/albums/1">Doolittle </a>')
     end
   end
 
