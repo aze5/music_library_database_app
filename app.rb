@@ -14,6 +14,12 @@ class Application < Sinatra::Base
     also_reload 'lib/artist_repository'
   end
 
+  get '/albums' do
+    repo = AlbumRepository.new
+    @albums = repo.all
+    return erb(:all_albums)
+  end
+
   get "/albums/new" do
     return erb(:album_form)
   end
@@ -29,12 +35,6 @@ class Application < Sinatra::Base
     @title = album.title
     @release_year = album.release_year
     return erb(:id_html)
-  end
-
-  get '/albums' do
-    repo = AlbumRepository.new
-    @albums = repo.all
-    return erb(:all_albums)
   end
 
   post '/albums' do
